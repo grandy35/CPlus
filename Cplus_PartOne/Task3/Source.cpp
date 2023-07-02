@@ -3,44 +3,47 @@
 
 using namespace std;
 
-int main() {
-    const int N = 5; // размерность массива
-    const int R = 5;
-    int arr[N][R]; // объ€вление двумерного массива
+/*
+	—оздайте класс вектора.
+	≈го переменные должны быть в приватной области видимости.
+	ѕоказывать значени€ этих переменных нужно через публичный метод.
+	ƒополните класс Vector public методом, который будет возвращать длину (модуль) вектора.
+	на с++
+*/
 
-    // заполнение массива
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < R; j++) {
-            arr[i][j] = i + j;
-        }
-    }
+class Vector {
+private:
+	double x;
+	double y;
+	double z;
 
-    // вывод массива в консоль
-    cout << "ћассив:\n";
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < R; j++) {
-            cout << arr[i][j] << " ";
-        }
-        cout << endl;
-    }
+public:
+	Vector(double x1, double y1, double z1) {
+		x = x1;
+		y = y1;
+		z = z1;
+	}
 
-    // вычисление индекса строки
-    struct tm buf;
-    time_t t = time(NULL);
-    localtime_s(&buf, &t);
-    buf.tm_mday;
+	double get_x() {
+		return x;
+	}
 
-    // инициализаци€ индекса
-    int index = buf.tm_mday % R;
+	double get_y() {
+		return y;
+	}
 
-    // вычисление суммы элементов в строке с заданным индексом
-    int sum = 0;
-    for (int j = 0; j < R; j++) {
-        sum = sum + arr[index][j];
-    }
+	double get_z() {
+		return z;
+	}
 
-    // вывод результата в консоль
-    cout << "—умма элементов в строке " << index << ": " << sum << endl;
+	int get_lenght() {
+		return pow(x, 2) + pow(y, 2) + pow(z, 2); // x^2 + y^2 + z^2
+	}
+};
 
-    return 0;
+int main()
+{
+	Vector vector(5, 10, 15);
+	cout << vector.get_x() << ' ' << vector.get_y() << ' ' << vector.get_z() << endl;
+	cout << "Length of vector = " << vector.get_lenght();
 }
