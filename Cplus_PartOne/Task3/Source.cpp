@@ -23,7 +23,7 @@ public:
 void show_players(Player* players, int number_of_players) {
     cout << endl;
     for (int i = 0; i < number_of_players; i++) {
-        cout << "Name: " << players[i].name << " ";
+        cout << "Name: " << players[i].name() << " ";
         cout << "Score: " << players[i].score;
         cout << endl;
     }
